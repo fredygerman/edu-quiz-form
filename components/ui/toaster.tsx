@@ -11,7 +11,7 @@ function Toaster({ ...props }: ToasterProps) {
   return (
     <Sonner
       theme={theme as ToasterProps["theme"]}
-      className="toaster group"
+      className="toaster group"  // eslint-disable-line tailwindcss/no-custom-classname
       toastOptions={{
         classNames: {
           toast:

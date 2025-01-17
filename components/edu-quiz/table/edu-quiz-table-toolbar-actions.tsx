@@ -1,7 +1,7 @@
 "use client"
 
 import * as React from "react"
-import { eduQuiz } from "@/db/tables/edu-quiz"
+import { type eduQuiz } from "@/db/tables/edu-quiz"
 import { DownloadIcon } from "@radix-ui/react-icons"
 import { type Table } from "@tanstack/react-table"
 
