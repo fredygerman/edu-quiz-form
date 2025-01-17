@@ -79,10 +79,10 @@ const ShadcnDatePicker: React.FC<ShadcnDatePickerProps> = ({
     "November",
     "December",
   ]
-  const years = Array.from(
-    { length: endYear - startYear + 1 },
-    (_, i) => startYear + i
-  )
+  // const years = Array.from(
+  //   { length: endYear - startYear + 1 },
+  //   (_, i) => startYear + i
+  // )
   return (
     <div className="grid max-w-[360px] grid-cols-3 gap-4 dark:text-white">
       <Select onValueChange={handleDayChange}>

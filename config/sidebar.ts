@@ -2,9 +2,7 @@ import {
   BarChart2,
   HelpCircle,
   MessageSquare,
-  Settings,
   Users,
-  Users2,
   type LucideIcon,
 } from "lucide-react"
 
