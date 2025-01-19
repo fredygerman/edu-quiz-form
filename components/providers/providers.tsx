@@ -1,7 +1,6 @@
 "use client"
 
 import * as React from "react"
-import { useSearchParams } from "next/navigation"
 import { Analytics } from "@vercel/analytics/next"
 import { type Session } from "next-auth"
 import { ThemeProvider as NextThemesProvider } from "next-themes"
