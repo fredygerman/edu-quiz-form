@@ -6,6 +6,7 @@ import NextAuth, {
   type Profile,
 } from "next-auth"
 import GoogleProvider from "next-auth/providers/google"
+import ZohoProvider from "next-auth/providers/zoho"
 
 export const authOptions: NextAuthOptions = {
   providers: [
@@ -30,13 +31,44 @@ export const authOptions: NextAuthOptions = {
             email: email,
             fullName: "",
             picture: "",
+            provider: "google",
           })
         }
         return {
-          email: tokens.email,
-          name: tokens.name,
-          picture: tokens.picture,
-          id: tokens.sub,
+          email: tokens.email || "",
+          name: tokens.name || "",
+          picture: tokens.picture || "",
+          id: tokens.sub || "",
+          customUser: existingUser,
+          ...tokens,
+          ...profile,
+        }
+      },
+    }),
+    ZohoProvider({
+      clientId: process.env.ZOHO_CLIENT_ID || "",
+      clientSecret: process.env.ZOHO_CLIENT_SECRET || "",
+      async profile(tokens, profile) {
+        console.log("tokens in zoho provider", tokens)
+        console.log("profile in zoho provider", profile)
+        const email = tokens.Email || ""
+        let existingUser = await getUserByEmail(email)
+        if (!existingUser) {
+          console.log(
+            "User does not exist, creating new user in zoho provider profile"
+          )
+          existingUser = await createUser({
+            email: email,
+            fullName: tokens.Display_Name || "",
+            picture: "",
+            provider: "zoho", // Save provider name
+          })
+        }
+        return {
+          email: tokens.Email || "",
+          name: tokens.Display_Name || "",
+          picture: "",
+          id: tokens.ZUID || "",
           customUser: existingUser,
           ...tokens,
           ...profile,
@@ -64,7 +96,7 @@ export const authOptions: NextAuthOptions = {
       // console.log("profile in signIn callback", profile)
       if (
         account &&
-        account.provider === "google" &&
+        (account.provider === "google" || account.provider === "zoho") &&
         profile &&
         profile.email
       ) {
@@ -80,7 +112,13 @@ export const authOptions: NextAuthOptions = {
         const email = profile?.email
         let existingUser = await getUserByEmail(email)
 
-        if (existingUser && profile) {
+        if (existingUser) {
+          if (existingUser.provider !== account.provider) {
+            console.log(
+              `User signed up with ${existingUser.provider}, but tried to log in with ${account.provider}`
+            )
+            return false
+          }
           await updateUserProfile(email, {
             picture: profile.picture ?? "",
             name: profile.name || "",
@@ -96,6 +134,7 @@ export const authOptions: NextAuthOptions = {
             email: email,
             fullName: profile?.name || "",
             picture: profile?.picture || "",
+            provider: account.provider,
           })
         }
         account.user = existingUser // Attach the user object to the account

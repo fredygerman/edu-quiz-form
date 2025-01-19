@@ -1,6 +1,7 @@
 "use client"
 
 import * as React from "react"
+import { useSearchParams } from "next/navigation"
 import { Analytics } from "@vercel/analytics/next"
 import { type Session } from "next-auth"
 import { ThemeProvider as NextThemesProvider } from "next-themes"
@@ -11,6 +12,7 @@ import { Toaster } from "@/components/ui/sonner"
 import { TooltipProvider } from "@/components/ui/tooltip"
 
 import AuthProvider from "./auth-provider"
+import ErrorToastProvider from "./ErrorToastProvider"
 
 export default function Providers({
   session,
@@ -24,7 +26,9 @@ export default function Providers({
     <AuthProvider session={session}>
       <NextThemesProvider {...props}>
         <NuqsAdapter>
-          <TooltipProvider>{children}</TooltipProvider>
+          <TooltipProvider>
+            <ErrorToastProvider>{children}</ErrorToastProvider>
+          </TooltipProvider>
         </NuqsAdapter>
         <Analytics />
         <Toaster richColors />

@@ -8,6 +8,7 @@ export async function createUser(data: {
   email: string
   fullName: string
   picture: string
+  provider: string
 }) {
   const createdUser = await db
     .insert(users)
@@ -15,6 +16,7 @@ export async function createUser(data: {
       email: data.email,
       name: data.fullName,
       picture: data.picture,
+      provider: data.provider,
       role: "user",
       isActive: true,
     })

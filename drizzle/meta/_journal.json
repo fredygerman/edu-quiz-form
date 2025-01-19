@@ -8,6 +8,13 @@
       "when": 1737094319733,
       "tag": "0000_mean_nextwave",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1737281082488,
+      "tag": "0001_brave_scalphunter",
+      "breakpoints": true
     }
   ]
 }

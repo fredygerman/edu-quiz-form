@@ -21,6 +21,7 @@ export const users = pgTable("users", {
   email: varchar("email", { length: 255 }).notNull().unique(),
   picture: varchar("picture", { length: 255 }),
   role: roleEnum("role").default("user"),
+  provider: varchar("provider", { length: 255 }).notNull(),
   isActive: boolean("is_active").default(true),
   createdAt: date("created_at").defaultNow(),
   updatedAt: date("updated_at").defaultNow(),
