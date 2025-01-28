@@ -4,6 +4,8 @@ import { useState } from "react"
 import Image from "next/image"
 import { useRouter } from "next/navigation"
 import { eduQuizSignUp } from "@/actions/edu-quiz"
+import { countries } from "@/data/countries"
+import { nationalities } from "@/data/nationalities"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { Loader } from "lucide-react"
 import { useForm } from "react-hook-form"
@@ -189,14 +191,15 @@ export default function EduQuizForm() {
                   >
                     <FormControl>
                       <SelectTrigger>
-                        <SelectValue placeholder="Select a country" />
+                        <SelectValue placeholder="Select a nationality" />
                       </SelectTrigger>
                     </FormControl>
                     <SelectContent>
-                      <SelectItem value="uk">United Kingdom</SelectItem>
-                      <SelectItem value="us">United States</SelectItem>
-                      <SelectItem value="ng">Nigeria</SelectItem>
-                      <SelectItem value="gh">Ghana</SelectItem>
+                      {nationalities.map((nationality) => (
+                        <SelectItem key={nationality} value={nationality}>
+                          {nationality}
+                        </SelectItem>
+                      ))}
                     </SelectContent>
                   </Select>
                   <FormMessage />
@@ -219,10 +222,11 @@ export default function EduQuizForm() {
                       </SelectTrigger>
                     </FormControl>
                     <SelectContent>
-                      <SelectItem value="uk">United Kingdom</SelectItem>
-                      <SelectItem value="us">United States</SelectItem>
-                      <SelectItem value="ng">Nigeria</SelectItem>
-                      <SelectItem value="gh">Ghana</SelectItem>
+                      {countries.map((country) => (
+                        <SelectItem key={country.code} value={country.code}>
+                          {country.name}
+                        </SelectItem>
+                      ))}
                     </SelectContent>
                   </Select>
                   <FormMessage />
@@ -254,22 +258,12 @@ export default function EduQuizForm() {
               render={({ field }) => (
                 <FormItem>
                   <FormLabel>Course of study</FormLabel>
-                  <Select
-                    onValueChange={field.onChange}
-                    defaultValue={field.value}
-                  >
-                    <FormControl>
-                      <SelectTrigger>
-                        <SelectValue placeholder="Select" />
-                      </SelectTrigger>
-                    </FormControl>
-                    <SelectContent>
-                      <SelectItem value="cs">Computer Science</SelectItem>
-                      <SelectItem value="eng">Engineering</SelectItem>
-                      <SelectItem value="bus">Business</SelectItem>
-                      <SelectItem value="arts">Arts</SelectItem>
-                    </SelectContent>
-                  </Select>
+                  <FormControl>
+                    <Input
+                      placeholder="Enter your course of study"
+                      {...field}
+                    />
+                  </FormControl>
                   <FormMessage />
                 </FormItem>
               )}
