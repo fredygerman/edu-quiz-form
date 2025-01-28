@@ -108,3 +108,8 @@ export async function eduQuizSignUp(data: EduQuizFormData): Promise<{
     }
   }
 }
+
+export async function getAllEduQuizzes() {
+  const quizzes = await db.select().from(eduQuiz).execute()
+  return quizzes
+}

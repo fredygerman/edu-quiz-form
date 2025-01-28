@@ -41,7 +41,7 @@ export default async function QuizzesPage(props: PageProps) {
         <div className="flex auto-rows-max items-end justify-end gap-4 md:gap-8 lg:col-span-2">
           <Link href="/">
             <Button className="mb-4 rounded bg-blue-500 px-4 py-2 text-white">
-              Add Quiz
+              Add Submission
             </Button>
           </Link>
         </div>

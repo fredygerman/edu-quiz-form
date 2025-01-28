@@ -21,7 +21,6 @@ export default function Page() {
                 src="/images/quiz-image.jpg"
                 alt="Students with books"
                 layout="fill"
-                objectFit="cover"
                 className="absolute inset-0 rounded-lg py-8"
               />
             </div>
