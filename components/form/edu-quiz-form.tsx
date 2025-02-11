@@ -23,6 +23,8 @@ import {
   FormMessage,
 } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
+import { Label } from "@/components/ui/label"
+import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
 import {
   Select,
   SelectContent,
@@ -56,6 +58,7 @@ export default function EduQuizForm() {
       hasSocialMedia: false,
       commitToSharing: false,
       agreeToRules: false,
+      hearAboutEduQuiz: "",
       digitalSignature: "",
     },
   })
@@ -436,6 +439,50 @@ export default function EduQuizForm() {
                   <FormLabel>Facebook</FormLabel>
                   <FormControl>
                     <Input placeholder="https://facebook.com/" {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+          </div>
+          <div className="space-y-4">
+            <FormField
+              control={form.control}
+              name="hearAboutEduQuiz"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Where did you hear about the EduQuiz?</FormLabel>
+                  <FormControl>
+                    <RadioGroup
+                      value={field.value}
+                      onValueChange={field.onChange}
+                    >
+                      <div className="flex items-center space-x-4">
+                        <div className="flex items-center space-x-2">
+                          <RadioGroupItem value="LinkedIn" id="r_linkedin" />
+                          <Label htmlFor="r_linkedin">LinkedIn</Label>
+                        </div>
+                        <div className="flex items-center space-x-2">
+                          <RadioGroupItem value="Facebook" id="r_facebook" />
+                          <Label htmlFor="r_facebook">Facebook</Label>
+                        </div>
+                        <div className="flex items-center space-x-2">
+                          <RadioGroupItem value="Instagram" id="r_instagram" />
+                          <Label htmlFor="r_instagram">Instagram</Label>
+                        </div>
+                        <div className="flex items-center space-x-2">
+                          <RadioGroupItem value="X" id="r_x" />
+                          <Label htmlFor="r_x">X (Twitter) </Label>
+                        </div>
+                        <div className="flex items-center space-x-2">
+                          <RadioGroupItem
+                            value="Word of Mouth"
+                            id="r_wordofmouth"
+                          />
+                          <Label htmlFor="r_wordofmouth">Word of Mouth</Label>
+                        </div>
+                      </div>
+                    </RadioGroup>
                   </FormControl>
                   <FormMessage />
                 </FormItem>

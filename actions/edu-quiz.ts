@@ -87,6 +87,7 @@ export async function eduQuizSignUp(data: EduQuizFormData): Promise<{
         hasSocialMedia: data.hasSocialMedia,
         commitToSharing: data.commitToSharing,
         agreeToRules: data.agreeToRules,
+        hearAboutEduQuiz: data.hearAboutEduQuiz,
         digitalSignature: data.digitalSignature,
       })
       .returning()

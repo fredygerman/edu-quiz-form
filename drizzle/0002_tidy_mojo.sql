@@ -1,0 +1,1 @@
+ALTER TABLE "edu_quiz" ADD COLUMN "hear_about_edu_quiz" varchar(255) DEFAULT 'NoResponse' NOT NULL;

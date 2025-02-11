@@ -37,6 +37,9 @@ export const EduQuizFormSchema = z.object({
   hasSocialMedia: z.boolean(),
   commitToSharing: z.boolean(),
   agreeToRules: z.boolean(),
+  hearAboutEduQuiz: z
+    .string()
+    .min(1, "Please select how you heard about EduQuiz."),
   digitalSignature: z
     .string()
     .min(2, "Digital signature must be at least 2 characters."),

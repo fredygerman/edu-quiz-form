@@ -25,6 +25,9 @@ const eduQuiz = pgTable("edu_quiz", {
   hasSocialMedia: boolean("has_social_media").notNull(),
   commitToSharing: boolean("commit_to_sharing").notNull(),
   agreeToRules: boolean("agree_to_rules").notNull(),
+  hearAboutEduQuiz: varchar("hear_about_edu_quiz", { length: 255 })
+    .default("NoResponse")
+    .notNull(),
   digitalSignature: varchar("digital_signature", { length: 255 }).notNull(),
   createdAt: date("created_at").defaultNow(),
   updatedAt: date("updated_at").defaultNow(),
