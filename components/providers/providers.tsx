@@ -9,6 +9,7 @@ import { NuqsAdapter } from "nuqs/adapters/next/app"
 
 import { Toaster } from "@/components/ui/sonner"
 import { TooltipProvider } from "@/components/ui/tooltip"
+import { PostHogProvider } from "@/components/providers/posthog-provider"
 
 import AuthProvider from "./auth-provider"
 import ErrorToastProvider from "./ErrorToastProvider"
@@ -26,7 +27,9 @@ export default function Providers({
       <NextThemesProvider {...props}>
         <NuqsAdapter>
           <TooltipProvider>
-            <ErrorToastProvider>{children}</ErrorToastProvider>
+            <PostHogProvider>
+              <ErrorToastProvider>{children}</ErrorToastProvider>
+            </PostHogProvider>
           </TooltipProvider>
         </NuqsAdapter>
         <Analytics />
