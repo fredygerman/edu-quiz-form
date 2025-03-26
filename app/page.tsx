@@ -31,7 +31,7 @@ function SubmissionsClosed() {
         Thank you for your interest. The submission period has ended. Please
         check back later for future opportunities.
       </p>
-      <Link href="/">
+      <Link href="https://edukateafrica.com/">
         <Button className="rounded px-4 py-2">Go to Edukate Platform </Button>
       </Link>
     </div>
