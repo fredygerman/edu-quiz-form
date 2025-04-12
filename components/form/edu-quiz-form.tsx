@@ -50,18 +50,16 @@ export default function EduQuizForm() {
       institution: "",
       courseOfStudy: "",
       yearOfStudy: "",
-      linkedin: "",
-      instagram: "",
-      twitter: "",
-      facebook: "",
+      socialMediaLink: "",
+      hearAboutEduQuiz: "",
+      digitalSignature: "",
+      // Eligibility criteria
       isStudent: false,
       isAfrican: false,
       hasActiveSocialMedia: false,
       agreeToShare: false,
       agreeToSubmitLink: false,
       agreeToRules: false,
-      hearAboutEduQuiz: "",
-      digitalSignature: "",
     },
   })
 
@@ -447,54 +445,21 @@ export default function EduQuizForm() {
             </div>
           </div>
           <div className="space-y-4">
-            <h2 className="text-xl font-semibold">Social Media Links</h2>
+            <h2 className="text-xl font-semibold">Social Media Link</h2>
+            <p className="mb-4 text-sm text-muted-foreground">
+              Please include the link to your most active social media account.
+            </p>
             <FormField
               control={form.control}
-              name="linkedin"
+              name="socialMediaLink"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>LinkedIn</FormLabel>
+                  <FormLabel>
+                    Social Media Link{" "}
+                    <span className="text-sm text-red-500">(required)</span>
+                  </FormLabel>
                   <FormControl>
-                    <Input placeholder="https://linkedin.com/in/" {...field} />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-            <FormField
-              control={form.control}
-              name="instagram"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Instagram</FormLabel>
-                  <FormControl>
-                    <Input placeholder="https://instagram.com/" {...field} />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-            <FormField
-              control={form.control}
-              name="twitter"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Twitter</FormLabel>
-                  <FormControl>
-                    <Input placeholder="https://twitter.com/" {...field} />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-            <FormField
-              control={form.control}
-              name="facebook"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Facebook</FormLabel>
-                  <FormControl>
-                    <Input placeholder="https://facebook.com/" {...field} />
+                    <Input placeholder="https://" {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -507,7 +472,10 @@ export default function EduQuizForm() {
               name="hearAboutEduQuiz"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Where did you hear about the EduQuiz?</FormLabel>
+                  <FormLabel>
+                    Where did you hear about the EduQuiz?{" "}
+                    <span className="text-sm text-red-500">(required)</span>
+                  </FormLabel>
                   <FormControl>
                     <RadioGroup
                       value={field.value}

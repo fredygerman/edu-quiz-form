@@ -16,22 +16,10 @@ export const EduQuizFormSchema = z.object({
     .min(2, "Institution name must be at least 2 characters."),
   courseOfStudy: z.string().min(1, "Please select a course of study."),
   yearOfStudy: z.string().min(1, "Please select a year of study."),
-  linkedin: z
+  socialMediaLink: z
     .string()
-    .url("Invalid LinkedIn URL.")
-    .optional()
-    .or(z.literal("")),
-  instagram: z
-    .string()
-    .url("Invalid Instagram URL.")
-    .optional()
-    .or(z.literal("")),
-  twitter: z.string().url("Invalid Twitter URL.").optional().or(z.literal("")),
-  facebook: z
-    .string()
-    .url("Invalid Facebook URL.")
-    .optional()
-    .or(z.literal("")),
+    .url("Please enter a valid URL for your most active social media account.")
+    .min(1, "Please provide your most active social media account link."),
   isStudent: z.boolean().refine((val) => val === true, {
     message: "You must confirm that you are a student",
   }),
