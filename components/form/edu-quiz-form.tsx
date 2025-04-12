@@ -2,6 +2,7 @@
 
 import { useState } from "react"
 import Image from "next/image"
+import Link from "next/link"
 import { useRouter } from "next/navigation"
 import { eduQuizSignUp } from "@/actions/edu-quiz"
 import { countries } from "@/data/countries"
@@ -55,8 +56,9 @@ export default function EduQuizForm() {
       facebook: "",
       isStudent: false,
       isAfrican: false,
-      hasSocialMedia: false,
-      commitToSharing: false,
+      hasActiveSocialMedia: false,
+      agreeToShare: false,
+      agreeToSubmitLink: false,
       agreeToRules: false,
       hearAboutEduQuiz: "",
       digitalSignature: "",
@@ -301,22 +303,28 @@ export default function EduQuizForm() {
             />
           </div>
           <div className="space-y-4">
-            <h2 className="text-xl font-semibold">Eligibility Criteria</h2>
-            <div className="space-y-2">
+            <h2 className="text-xl font-semibold">
+              Eligibility Criteria{" "}
+              <span className="text-sm text-red-500">(all required)</span>
+            </h2>
+            <div className="space-y-4">
               <FormField
                 control={form.control}
                 name="isStudent"
                 render={({ field }) => (
-                  <FormItem className="flex flex-row items-start space-x-3 space-y-0">
-                    <FormControl>
-                      <Checkbox
-                        checked={field.value}
-                        onCheckedChange={field.onChange}
-                      />
-                    </FormControl>
-                    <div className="space-y-1 leading-none">
-                      <FormLabel>I am a student</FormLabel>
+                  <FormItem className="space-y-2">
+                    <div className="flex flex-row items-start space-x-3">
+                      <FormControl>
+                        <Checkbox
+                          checked={field.value}
+                          onCheckedChange={field.onChange}
+                        />
+                      </FormControl>
+                      <div className="space-y-1 leading-none">
+                        <FormLabel>I am a student</FormLabel>
+                      </div>
                     </div>
+                    <FormMessage />
                   </FormItem>
                 )}
               />
@@ -324,50 +332,86 @@ export default function EduQuizForm() {
                 control={form.control}
                 name="isAfrican"
                 render={({ field }) => (
-                  <FormItem className="flex flex-row items-start space-x-3 space-y-0">
-                    <FormControl>
-                      <Checkbox
-                        checked={field.value}
-                        onCheckedChange={field.onChange}
-                      />
-                    </FormControl>
-                    <div className="space-y-1 leading-none">
-                      <FormLabel>I am of African descent</FormLabel>
+                  <FormItem className="space-y-2">
+                    <div className="flex flex-row items-start space-x-3">
+                      <FormControl>
+                        <Checkbox
+                          checked={field.value}
+                          onCheckedChange={field.onChange}
+                        />
+                      </FormControl>
+                      <div className="space-y-1 leading-none">
+                        <FormLabel>I am of African descent</FormLabel>
+                      </div>
                     </div>
+                    <FormMessage />
                   </FormItem>
                 )}
               />
               <FormField
                 control={form.control}
-                name="hasSocialMedia"
+                name="hasActiveSocialMedia"
                 render={({ field }) => (
-                  <FormItem className="flex flex-row items-start space-x-3 space-y-0">
-                    <FormControl>
-                      <Checkbox
-                        checked={field.value}
-                        onCheckedChange={field.onChange}
-                      />
-                    </FormControl>
-                    <div className="space-y-1 leading-none">
-                      <FormLabel>I have a social media following</FormLabel>
+                  <FormItem className="space-y-2">
+                    <div className="flex flex-row items-start space-x-3">
+                      <FormControl>
+                        <Checkbox
+                          checked={field.value}
+                          onCheckedChange={field.onChange}
+                        />
+                      </FormControl>
+                      <div className="space-y-1 leading-none">
+                        <FormLabel>
+                          I have at least one active social media account
+                        </FormLabel>
+                      </div>
                     </div>
+                    <FormMessage />
                   </FormItem>
                 )}
               />
               <FormField
                 control={form.control}
-                name="commitToSharing"
+                name="agreeToShare"
                 render={({ field }) => (
-                  <FormItem className="flex flex-row items-start space-x-3 space-y-0">
-                    <FormControl>
-                      <Checkbox
-                        checked={field.value}
-                        onCheckedChange={field.onChange}
-                      />
-                    </FormControl>
-                    <div className="space-y-1 leading-none">
-                      <FormLabel>I commit to sharing the flyer</FormLabel>
+                  <FormItem className="space-y-2">
+                    <div className="flex flex-row items-start space-x-3">
+                      <FormControl>
+                        <Checkbox
+                          checked={field.value}
+                          onCheckedChange={field.onChange}
+                        />
+                      </FormControl>
+                      <div className="space-y-1 leading-none">
+                        <FormLabel>
+                          I agree to share the flyer on my social media account
+                        </FormLabel>
+                      </div>
                     </div>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              <FormField
+                control={form.control}
+                name="agreeToSubmitLink"
+                render={({ field }) => (
+                  <FormItem className="space-y-2">
+                    <div className="flex flex-row items-start space-x-3">
+                      <FormControl>
+                        <Checkbox
+                          checked={field.value}
+                          onCheckedChange={field.onChange}
+                        />
+                      </FormControl>
+                      <div className="space-y-1 leading-none">
+                        <FormLabel>
+                          I will submit the link to my social media account for
+                          verification
+                        </FormLabel>
+                      </div>
+                    </div>
+                    <FormMessage />
                   </FormItem>
                 )}
               />
@@ -375,16 +419,28 @@ export default function EduQuizForm() {
                 control={form.control}
                 name="agreeToRules"
                 render={({ field }) => (
-                  <FormItem className="flex flex-row items-start space-x-3 space-y-0">
-                    <FormControl>
-                      <Checkbox
-                        checked={field.value}
-                        onCheckedChange={field.onChange}
-                      />
-                    </FormControl>
-                    <div className="space-y-1 leading-none">
-                      <FormLabel>I agree to the competition rules</FormLabel>
+                  <FormItem className="space-y-2">
+                    <div className="flex flex-row items-start space-x-3">
+                      <FormControl>
+                        <Checkbox
+                          checked={field.value}
+                          onCheckedChange={field.onChange}
+                        />
+                      </FormControl>
+                      <div className="space-y-1 leading-none">
+                        <FormLabel>
+                          I confirm that I am eligible and agree to the
+                          competition rules which are found{" "}
+                          <Link
+                            href="https://www.instagram.com/edukateafrica/"
+                            className="text-blue-500 underline"
+                          >
+                            here
+                          </Link>
+                        </FormLabel>
+                      </div>
                     </div>
+                    <FormMessage />
                   </FormItem>
                 )}
               />
@@ -475,11 +531,8 @@ export default function EduQuizForm() {
                           <Label htmlFor="r_x">X (Twitter) </Label>
                         </div>
                         <div className="flex items-center space-x-2">
-                          <RadioGroupItem
-                            value="Word of Mouth"
-                            id="r_wordofmouth"
-                          />
-                          <Label htmlFor="r_wordofmouth">Word of Mouth</Label>
+                          <RadioGroupItem value="Word of Mouth" id="mouth" />
+                          <Label htmlFor="r_word-of-mouth">Word of Mouth</Label>
                         </div>
                       </div>
                     </RadioGroup>

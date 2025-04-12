@@ -32,11 +32,27 @@ export const EduQuizFormSchema = z.object({
     .url("Invalid Facebook URL.")
     .optional()
     .or(z.literal("")),
-  isStudent: z.boolean(),
-  isAfrican: z.boolean(),
-  hasSocialMedia: z.boolean(),
-  commitToSharing: z.boolean(),
-  agreeToRules: z.boolean(),
+  isStudent: z.boolean().refine((val) => val === true, {
+    message: "You must confirm that you are a student",
+  }),
+  isAfrican: z.boolean().refine((val) => val === true, {
+    message: "You must confirm that you are of African descent",
+  }),
+  hasActiveSocialMedia: z.boolean().refine((val) => val === true, {
+    message:
+      "You must confirm that you have at least one active social media account",
+  }),
+  agreeToShare: z.boolean().refine((val) => val === true, {
+    message: "You must agree to share the flyer on your social media account",
+  }),
+  agreeToSubmitLink: z.boolean().refine((val) => val === true, {
+    message:
+      "You must agree to submit your social media account link for verification",
+  }),
+  agreeToRules: z.boolean().refine((val) => val === true, {
+    message:
+      "You must confirm that you are eligible and agree to the competition rules",
+  }),
   hearAboutEduQuiz: z
     .string()
     .min(1, "Please select how you heard about EduQuiz."),
