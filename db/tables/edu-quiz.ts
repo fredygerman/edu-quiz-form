@@ -16,14 +16,12 @@ const eduQuiz = pgTable("edu_quiz", {
   institution: varchar("institution", { length: 255 }).notNull(),
   courseOfStudy: varchar("course_of_study", { length: 255 }).notNull(),
   yearOfStudy: varchar("year_of_study", { length: 255 }).notNull(),
-  linkedin: varchar("linkedin", { length: 255 }),
-  instagram: varchar("instagram", { length: 255 }),
-  twitter: varchar("twitter", { length: 255 }),
-  facebook: varchar("facebook", { length: 255 }),
+  socialMediaLink: varchar("social_media_link", { length: 255 }).notNull(),
   isStudent: boolean("is_student").notNull(),
   isAfrican: boolean("is_african").notNull(),
-  hasSocialMedia: boolean("has_social_media").notNull(),
-  commitToSharing: boolean("commit_to_sharing").notNull(),
+  hasActiveSocialMedia: boolean("has_active_social_media").notNull(),
+  agreeToShare: boolean("agree_to_share").notNull(),
+  agreeToSubmitLink: boolean("agree_to_submit_link").notNull(),
   agreeToRules: boolean("agree_to_rules").notNull(),
   hearAboutEduQuiz: varchar("hear_about_edu_quiz", { length: 255 })
     .default("NoResponse")
