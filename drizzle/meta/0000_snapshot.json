@@ -1,5 +1,5 @@
 {
-  "id": "b14e9906-c85a-461f-9d55-f37c2eef5156",
+  "id": "c0f15796-a69d-4d9a-8a68-d9e4ca737c0c",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "version": "7",
   "dialect": "postgresql",
@@ -75,29 +75,11 @@
           "primaryKey": false,
           "notNull": true
         },
-        "linkedin": {
-          "name": "linkedin",
+        "social_media_link": {
+          "name": "social_media_link",
           "type": "varchar(255)",
           "primaryKey": false,
-          "notNull": false
-        },
-        "instagram": {
-          "name": "instagram",
-          "type": "varchar(255)",
-          "primaryKey": false,
-          "notNull": false
-        },
-        "twitter": {
-          "name": "twitter",
-          "type": "varchar(255)",
-          "primaryKey": false,
-          "notNull": false
-        },
-        "facebook": {
-          "name": "facebook",
-          "type": "varchar(255)",
-          "primaryKey": false,
-          "notNull": false
+          "notNull": true
         },
         "is_student": {
           "name": "is_student",
@@ -111,14 +93,20 @@
           "primaryKey": false,
           "notNull": true
         },
-        "has_social_media": {
-          "name": "has_social_media",
+        "has_active_social_media": {
+          "name": "has_active_social_media",
           "type": "boolean",
           "primaryKey": false,
           "notNull": true
         },
-        "commit_to_sharing": {
-          "name": "commit_to_sharing",
+        "agree_to_share": {
+          "name": "agree_to_share",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "agree_to_submit_link": {
+          "name": "agree_to_submit_link",
           "type": "boolean",
           "primaryKey": false,
           "notNull": true
@@ -128,6 +116,13 @@
           "type": "boolean",
           "primaryKey": false,
           "notNull": true
+        },
+        "hear_about_edu_quiz": {
+          "name": "hear_about_edu_quiz",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "'NoResponse'"
         },
         "digital_signature": {
           "name": "digital_signature",
@@ -200,6 +195,12 @@
           "primaryKey": false,
           "notNull": false,
           "default": "'user'"
+        },
+        "provider": {
+          "name": "provider",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": true
         },
         "is_active": {
           "name": "is_active",

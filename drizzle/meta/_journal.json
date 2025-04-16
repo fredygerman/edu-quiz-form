@@ -5,22 +5,8 @@
     {
       "idx": 0,
       "version": "7",
-      "when": 1737094319733,
-      "tag": "0000_mean_nextwave",
-      "breakpoints": true
-    },
-    {
-      "idx": 1,
-      "version": "7",
-      "when": 1737281082488,
-      "tag": "0001_brave_scalphunter",
-      "breakpoints": true
-    },
-    {
-      "idx": 2,
-      "version": "7",
-      "when": 1739260026612,
-      "tag": "0002_tidy_mojo",
+      "when": 1744792379149,
+      "tag": "0000_colorful_paper_doll",
       "breakpoints": true
     }
   ]
