@@ -41,6 +41,14 @@ export function getColumns(): ColumnDef<typeof eduQuiz.$inferSelect>[] {
       enableSorting: true,
     },
     {
+      accessorKey: "nationality",
+      header: ({ column }) => (
+        <DataTableColumnHeader column={column} title="Nationality" />
+      ),
+      cell: ({ row }) => <div>{row.original.nationality}</div>,
+      enableSorting: true,
+    },
+    {
       accessorKey: "institution",
       header: ({ column }) => (
         <DataTableColumnHeader column={column} title="Institution" />
@@ -56,5 +64,13 @@ export function getColumns(): ColumnDef<typeof eduQuiz.$inferSelect>[] {
       cell: ({ row }) => <div>{row.original.courseOfStudy}</div>,
       enableSorting: true,
     },
+    {
+      accessorKey: "createdAt",
+      header: ({ column }) => (
+        <DataTableColumnHeader column={column} title="Created At" />
+      ),
+      cell: ({ row }) => <div>{row.original.createdAt ? new Date(row.original.createdAt).toLocaleDateString() : "-"}</div>,
+      enableSorting: true,
+    }
   ]
 }
