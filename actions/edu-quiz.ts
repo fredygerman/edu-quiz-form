@@ -64,6 +64,7 @@ export async function eduQuizSignUp(data: EduQuizFormData): Promise<{
   quiz?: typeof eduQuiz.$inferSelect
   error?: string
 }> {
+  console.log("EduQuiz Sign Up Data:", data)
   try {
     const createdQuiz = await db
       .insert(eduQuiz)
@@ -90,6 +91,8 @@ export async function eduQuizSignUp(data: EduQuizFormData): Promise<{
       })
       .returning()
       .execute()
+
+    console.log("Created Quiz:", createdQuiz)
 
     // delay
     await new Promise((resolve) => setTimeout(resolve, 2000))
