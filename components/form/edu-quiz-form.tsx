@@ -481,28 +481,16 @@ export default function EduQuizForm() {
                       value={field.value}
                       onValueChange={field.onChange}
                     >
-                      <div className="flex items-center space-x-4">
-                        <div className="flex items-center space-x-2">
-                          <RadioGroupItem value="LinkedIn" id="r_linkedin" />
-                          <Label htmlFor="r_linkedin">LinkedIn</Label>
-                        </div>
-                        <div className="flex items-center space-x-2">
-                          <RadioGroupItem value="Facebook" id="r_facebook" />
-                          <Label htmlFor="r_facebook">Facebook</Label>
-                        </div>
-                        <div className="flex items-center space-x-2">
-                          <RadioGroupItem value="Instagram" id="r_instagram" />
-                          <Label htmlFor="r_instagram">Instagram</Label>
-                        </div>
-                        <div className="flex items-center space-x-2">
-                          <RadioGroupItem value="X" id="r_x" />
-                          <Label htmlFor="r_x">X (Twitter) </Label>
-                        </div>
-                        <div className="flex items-center space-x-2">
-                          <RadioGroupItem value="Word of Mouth" id="mouth" />
-                          <Label htmlFor="r_word-of-mouth">Word of Mouth</Label>
-                        </div>
-                      </div>
+                      <RadioGroupItem value="LinkedIn" id="r_linkedin" />
+                      <Label htmlFor="r_linkedin">LinkedIn</Label>
+                      <RadioGroupItem value="Facebook" id="r_facebook" />
+                      <Label htmlFor="r_facebook">Facebook</Label>
+                      <RadioGroupItem value="Instagram" id="r_instagram" />
+                      <Label htmlFor="r_instagram">Instagram</Label>
+                      <RadioGroupItem value="X" id="r_x" />
+                      <Label htmlFor="r_x">X (Twitter) </Label>
+                      <RadioGroupItem value="Word of Mouth" id="mouth" />
+                      <Label htmlFor="r_word-of-mouth">Word of Mouth</Label>
                     </RadioGroup>
                   </FormControl>
                   <FormMessage />
